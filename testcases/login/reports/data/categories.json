@@ -1,0 +1,30 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Test defects",
+    "children" : [ {
+      "name" : "_pytest.fixtures.FixtureLookupError: ('base_url', <FixtureRequest for <Function test_login_1>>)",
+      "children" : [ {
+        "name" : "登录成功",
+        "uid" : "2a980b0145edbe9c",
+        "parentUid" : "09abfe1455ec7ef5522f91a472c72bcd",
+        "status" : "broken",
+        "time" : {
+          "start" : 1659778496715,
+          "stop" : 1659778496715,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 3,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "09abfe1455ec7ef5522f91a472c72bcd"
+    } ],
+    "uid" : "bdbf199525818fae7a8651db9eafe741"
+  } ]
+}

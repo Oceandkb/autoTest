@@ -1,0 +1,22 @@
+{
+  "009f081e355747c61bcefba121052e11" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 1,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "2a980b0145edbe9c",
+      "status" : "broken",
+      "statusDetails" : "_pytest.fixtures.FixtureLookupError: ('base_url', <FixtureRequest for <Function test_login_1>>)",
+      "time" : {
+        "start" : 1659778496715,
+        "stop" : 1659778496715,
+        "duration" : 0
+      }
+    } ]
+  }
+}

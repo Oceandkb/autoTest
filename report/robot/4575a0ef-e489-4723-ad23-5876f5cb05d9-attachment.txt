@@ -1,0 +1,1 @@
+{"code":1,"data":{"id":67869,"domainId":2,"name":"Auto_lib_class622","type":1,"parentId":0,"orderId":0,"webId":193,"createUserId":231773,"createTime":"2023-01-06 13:51:29","display":1,"useBaike":1,"useChatbot":1},"message":"操作成功!","messageArgs":null,"debug":null,"success":true}

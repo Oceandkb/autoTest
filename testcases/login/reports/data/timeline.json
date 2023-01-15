@@ -1,0 +1,93 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "DESKTOP-GCEADRS",
+    "children" : [ {
+      "name" : "5056-MainThread",
+      "children" : [ {
+        "name" : "登录成功",
+        "uid" : "75c666b360a27706",
+        "parentUid" : "27c5903d3bcf6814811340453db9578f",
+        "status" : "broken",
+        "time" : {
+          "start" : 1659778247920,
+          "stop" : 1659778247920,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "27c5903d3bcf6814811340453db9578f"
+    }, {
+      "name" : "8548-MainThread",
+      "children" : [ {
+        "name" : "登录成功",
+        "uid" : "d217bd7ea55d8ec4",
+        "parentUid" : "4a1f954c48bc1af402538ff21e1f1d24",
+        "status" : "broken",
+        "time" : {
+          "start" : 1659778436967,
+          "stop" : 1659778436967,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "4a1f954c48bc1af402538ff21e1f1d24"
+    }, {
+      "name" : "14132-MainThread",
+      "children" : [ {
+        "name" : "登录成功",
+        "uid" : "2a980b0145edbe9c",
+        "parentUid" : "918f3e17a32831214b5e7c0fd5bc94a7",
+        "status" : "broken",
+        "time" : {
+          "start" : 1659778496715,
+          "stop" : 1659778496715,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 3,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "918f3e17a32831214b5e7c0fd5bc94a7"
+    }, {
+      "name" : "13708-MainThread",
+      "children" : [ {
+        "name" : "登录成功",
+        "uid" : "76426e7245a9ac34",
+        "parentUid" : "5c9cab0393d6851d495864faa6a4d816",
+        "status" : "broken",
+        "time" : {
+          "start" : 1659778397562,
+          "stop" : 1659778397562,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "5c9cab0393d6851d495864faa6a4d816"
+    } ],
+    "uid" : "680121b771384c3e64b17bb661d8a63b"
+  } ]
+}
