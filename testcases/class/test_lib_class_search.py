@@ -9,7 +9,7 @@ from aikn_api.class_search import class_search
 
 @allure.epic("知识库")
 @allure.feature("分类")
-@allure.story("分库分类")
+@allure.story("文库分类")
 @allure.title('查询文库分类成功')
 # @pytest.mark.smoke
 def test_lib_class_search(login_fixture, base_url):

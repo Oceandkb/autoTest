@@ -12,8 +12,8 @@ def wiki_class_delet(s, base_url, classesId) ->Response:
     :param classesId:
     :return:
     '''
-    url=base_url+"/aikn-admin/knowledge/knowledge/v1/classes?classesId="+classesId+"&domainId=1"
-    r=requests.delete(url) # HTTP Delete
+    url = base_url+"/aikn-admin/knowledge/knowledge/v1/classes?classesId="+classesId+"&domainId=1"
+    r = requests.delete(url) # HTTP Delete
     js=r.json() # 解析json（如果该接口响应的是content-type是json格式的数据）
     cookie1=r.cookies# 获得cookie数据
     res=s.delete(url, json=js, cookies=cookie1)

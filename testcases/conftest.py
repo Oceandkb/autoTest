@@ -1,5 +1,5 @@
 from aikn_api.login_function import login
-from aikn_api.wiki_class_add import wiki_class_add
+from aikn_api.class_add import class_add
 from aikn_api.kn_att_add import *
 from aikn_api.kn_att_search import *
 from aikn_api.entry_add import entry_add
@@ -20,7 +20,7 @@ def login_fixture(base_url):
 
 @pytest.fixture(scope="session")
 def wiki_class_add_fixture(login_fixture, base_url):
-    wc = wiki_class_add(login_fixture, base_url)
+    wc = class_add(login_fixture, base_url, domain_id = 1)
     return wc
 
 @pytest.fixture(scope="session")
