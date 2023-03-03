@@ -1,0 +1,1 @@
+{"code":1,"data":[841125,849553,849555],"message":"默认分类下存在同名知识,删除失败","messageArgs":null,"debug":null,"success":true}
