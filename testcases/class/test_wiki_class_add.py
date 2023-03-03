@@ -9,7 +9,7 @@ import requests
 @allure.feature("分类")
 @allure.story("百科分类")
 @allure.title("添加百科分类成功")
-def test_wiki_class_add(login_fixture, base_url):
+def test_wiki_class_add(login_fixture, base_url, random_fixture):
     r = class_add(login_fixture, base_url, class_name= random_fixture, domain_id = 1)
     print(r.text)
     assert r.json()["code"] == 1

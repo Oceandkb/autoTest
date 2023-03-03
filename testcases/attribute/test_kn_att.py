@@ -21,7 +21,7 @@ from aikn_api.kn_att_disabled import *
 @pytest.mark.run(order = 1)
 #@pytest.mark.smoke
 def test_kn_text_att_add(login_fixture, base_url, random_fixture):
-    r = kn_text_att_add(login_fixture, base_url, random_name_fixture)
+    r = kn_text_att_add(login_fixture, base_url, random_fixture)
     print(r.text)
     assert r.json()["code"] == 1
     assert r.status_code == 200
