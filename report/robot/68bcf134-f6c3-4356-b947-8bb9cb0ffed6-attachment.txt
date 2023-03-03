@@ -1,1 +1,0 @@
-{"code":1,"data":{"updateKnowledge":true,"relateKnowledgeList":[],"successDel":null,"delFailed":null,"entryMap":null,"knowledgeLockQuestionNames":null},"message":"操作成功!","messageArgs":null,"debug":null,"success":true}

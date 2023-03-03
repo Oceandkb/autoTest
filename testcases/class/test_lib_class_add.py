@@ -4,7 +4,7 @@
 
 
 import allure
-from aikn_api.lib_class_add import lib_class_add
+from aikn_api.class_add import class_add
 import requests
 
 @allure.epic("知识库")
@@ -12,9 +12,7 @@ import requests
 @allure.story("文库分类")
 @allure.title("添加文库分类成功")
 def test_lib_class_add(login_fixture, base_url):
-    domainId = 2
-    lib_class_parentId = 0
-    r = lib_class_add(login_fixture, base_url, domainId, lib_class_parentId)
+    r = class_add(login_fixture, base_url, class_name= random_fixture, domain_id = 2)
     print(r.text)
     assert r.json()["code"] == 1
     assert r.status_code == 200

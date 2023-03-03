@@ -4,7 +4,7 @@ from requests import Response
 import os
 
 
-def login(s, base_url, user="zhishiku_c", password="123456Abc!") -> Response:
+def login(s, base_url, user="zhishiku_auto", password="123456Abc!") -> Response:
     a = os.path.dirname(os.path.abspath(__file__))
     data_path = os.path.join(a, "encryption.jar")
 #---------------------------------------------------------------------------------------------------------------+

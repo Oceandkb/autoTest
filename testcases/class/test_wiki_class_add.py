@@ -2,7 +2,7 @@
 # @Author : Chao
 # @File   : test_wiki_class_add.py
 import allure
-from aikn_api.wiki_class_add import wiki_class_add
+from aikn_api.class_add import class_add
 import requests
 
 @allure.epic("知识库")
@@ -10,9 +10,7 @@ import requests
 @allure.story("百科分类")
 @allure.title("添加百科分类成功")
 def test_wiki_class_add(login_fixture, base_url):
-    #domainId = "1"
-    #wiki_class_parentId = "0"
-    r = wiki_class_add(login_fixture, base_url)
+    r = class_add(login_fixture, base_url, class_name= random_fixture, domain_id = 1)
     print(r.text)
     assert r.json()["code"] == 1
     assert r.status_code == 200

@@ -25,10 +25,13 @@ def wiki_class_add_fixture(login_fixture, base_url):
 
 @pytest.fixture(scope="session")
 def random_fixture():
-   ran = str(random.randint(1,1000))
-   name = "Auto" + ran
+   """
+
+   :rtype: 随机汉字名称
+   """
+   ran = random.randint(0x4e00, 0x9fbf)
+   name = chr(ran) + "分类"
    yield name
-   #return name
 
 @pytest.fixture(scope="session")
 def kn_att_fixture(login_fixture, base_url, random_fixture):

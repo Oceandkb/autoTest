@@ -5,7 +5,7 @@
 
 import allure
 import requests
-from aikn_api.lib_class_search import lib_class_search
+from aikn_api.class_search import class_search
 
 @allure.epic("知识库")
 @allure.feature("分类")
@@ -13,7 +13,7 @@ from aikn_api.lib_class_search import lib_class_search
 @allure.title('查询文库分类成功')
 # @pytest.mark.smoke
 def test_lib_class_search(login_fixture, base_url):
-    r = lib_class_search(login_fixture, base_url)
+    r = class_search(login_fixture, base_url, domain_id = str(2))
     print(r.text)
     #for x in r_text:
      #   print(x)

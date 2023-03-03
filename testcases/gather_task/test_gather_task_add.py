@@ -16,7 +16,7 @@ from aikn_api.gather_task_add import gather_task_add_required
 #@allure.title('新增采编任务-必填项')
 #@pytest.mark.smoke
 def test_gather_task_add_required(login_fixture, base_url):
-    for i in range(10):
+    for i in range(20):
         i1 = str(i)
         task_name = i1 + "自动任务"
         r = gather_task_add_required(login_fixture, base_url, task_name)

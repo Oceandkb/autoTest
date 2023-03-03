@@ -1,2 +1,0 @@
-521
-{"code":1,"data":{"id":193,"classesId":-1,"domainId":0,"labelId":521,"alias":null,"need":0,"viewStyle":1,"defaultValue":"","questionType":"1","searchCondition":0,"status":1,"webId":193},"message":"操作成功!","messageArgs":null,"debug":null,"success":true}
