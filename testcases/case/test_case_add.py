@@ -18,7 +18,7 @@ def test_case_add(login_fixture, base_url, random_fixture):
     classes_id = str(r1['data'][0]['id'])
     r2 = field_search(login_fixture, base_url).json()
     fields_id = str(r2['data'][0]['id'])
-    r = case_add(login_fixture, base_url, case_name = random_fixture, rich_text_content = "", edit_type = "1",
+    r = case_add(login_fixture, base_url, case_name = random_fixture("案例"), rich_text_content = "", edit_type = "1",
                  class_id = classes_id, field_id = fields_id, open_field_id = fields_id, markdown_content = "搜索")
     print(r.text)
     assert r.json()["code"] == 1

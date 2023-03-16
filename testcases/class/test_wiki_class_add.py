@@ -10,7 +10,7 @@ import requests
 @allure.story("百科分类")
 @allure.title("添加百科分类成功")
 def test_wiki_class_add(login_fixture, base_url, random_fixture):
-    r = class_add(login_fixture, base_url, class_name= random_fixture, domain_id = 1)
+    r = class_add(login_fixture, base_url, class_name= random_fixture("分类"), domain_id = 1)
     print(r.text)
     assert r.json()["code"] == 1
     assert r.status_code == 200

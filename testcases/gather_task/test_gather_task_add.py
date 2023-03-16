@@ -14,10 +14,8 @@ from aikn_api.gather_task_add import gather_task_add_required
 @allure.feature("采编任务")
 @allure.story("新增采编任务-必填项")
 def test_gather_task_add_required(login_fixture, base_url, random_fixture):
-    task_name = random_fixture + "自动任务"
-    r = gather_task_add_required(login_fixture, base_url, task_name)
+    r = gather_task_add_required(login_fixture, base_url, task_name = random_fixture("任务"))
     print(r.text)
-    print(task_name)
     assert r.json()["code"] == 1
     assert r.status_code == 200
     assert r.json()['message'] == '操作成功!'

@@ -28,15 +28,17 @@ def random_fixture():
    """
    :rtype: 随机汉字名称
    """
-   first = random.randint(0xB0, 0xF7)
-   last = random.randint(0xA1, 0xFE)
-   s = f'{first:x}{last:x}'
-   ran = bytes.fromhex(s).decode('gb2312')
-   yield ran
+   def _random(name):
+     first = random.randint(0xB0, 0xF7)
+     last = random.randint(0xA1, 0xFE)
+     s = f'{first:x}{last:x}'
+     ran = bytes.fromhex(s).decode('gb2312') + name
+     return ran
+   yield _random
 
 @pytest.fixture(scope="session")
 def kn_att_fixture(login_fixture, base_url, random_fixture):
-    kn_text_att_add(login_fixture, base_url, random_fixture)
+    kn_text_att_add(login_fixture, base_url, random_fixture("文本"))
     r_att_search = kn_all_att_search(login_fixture, base_url)
     r_json = r_att_search.json()
     att_id = str(r_json['data']['list'][0]['id'])
@@ -47,7 +49,7 @@ def kn_att_fixture(login_fixture, base_url, random_fixture):
 @pytest.fixture(scope="session")
 def entry_fixture(login_fixture, base_url, random_fixture):
     '''查询词条setup：新增词条，列表查询新增的词条名称'''
-    entry_add(login_fixture, base_url, random_fixture)
+    entry_add(login_fixture, base_url, random_fixture("词条"))
     r = entry_list_search(login_fixture, base_url)
     r_json = r.json()
     entry_name = r_json['data']['list'][0]['questions'][0]['question']

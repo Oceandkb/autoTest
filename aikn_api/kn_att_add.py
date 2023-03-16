@@ -49,7 +49,7 @@ def kn_tree_parent_att_add(s, base_url, kn_tree_parent_att_name) -> Response:
     rp = s.post(url, json=body)
     rp_json = rp.json()  # 将response返回的json类型的数据转换
     global kn_tree_att_parentId  # 声明parentId为全局变量，方便在增加子级的函数中引用
-    kn_tree_att_parentId = rp_json['data']['id']  # 提取post请求的response中的id值
+    kn_tree_att_parentId = str(rp_json['data']['id'])  # 提取post请求的response中的id值
     print(rp_json)
     print(type(kn_tree_att_parentId))
     return rp
