@@ -1,6 +1,6 @@
 # @Time   ：2022/11/3 14:58
 # @Author : Chao
-# @File   : test_lib_class_delete.py
+# @File   : test_case_class_delete.py
 
 import allure
 from aikn_api.class_delete import class_delete
@@ -11,7 +11,7 @@ import requests
 @allure.feature("分类")
 @allure.story("案例库分类")
 @allure.title("删除案例分类成功")
-def test_lib_class_delete(login_fixture, base_url):
+def test_case_class_delete(login_fixture, base_url):
     r1 = class_search(login_fixture, base_url, domain_id = str(19))
     r1_json = r1.json()
     id = str(r1_json['data'][0]['id'])
