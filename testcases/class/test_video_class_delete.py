@@ -10,7 +10,7 @@ import requests
 @allure.epic("知识库")
 @allure.feature("分类")
 @allure.story("视频库分类")
-@allure.title("删除视频分类成功")
+@allure.title("删除视频库分类成功")
 def test_video_class_delete(login_fixture, base_url):
     r1 = class_search(login_fixture, base_url, domain_id = str(18))
     r1_json = r1.json()

@@ -8,8 +8,8 @@ from aikn_api.class_search import class_search
 
 @allure.epic("知识库")
 @allure.feature("分类")
-@allure.story("视频分类")
-@allure.title('查询视频分类成功')
+@allure.story("视频库分类")
+@allure.title('查询视频库分类成功')
 # @pytest.mark.smoke
 def test_video_class_search(login_fixture, base_url):
     r = class_search(login_fixture, base_url, domain_id = str(18))

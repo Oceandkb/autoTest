@@ -1,0 +1,1 @@
+{"code":1,"data":{"id":79881,"domainId":19,"name":"疔分类","type":1,"parentId":0,"orderId":18,"webId":193,"createUserId":231773,"createTime":"2023-03-17 16:45:35","display":1,"useBaike":1,"useChatbot":1},"message":"操作成功!","messageArgs":null,"debug":null,"success":true}

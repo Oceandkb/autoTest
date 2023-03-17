@@ -5,7 +5,6 @@
 '''
 import allure
 import requests
-import random
 from requests import Response
 
 
