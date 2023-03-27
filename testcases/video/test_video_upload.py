@@ -11,7 +11,7 @@ import requests
 @allure.story("视频库")
 @allure.title("上传视频成功")
 def test_video_upload(login_fixture, base_url):
-    r = video_upload(login_fixture, base_url, file_path = '/Users/iyunwen/Desktop/video/mp4/Grass.mp4')
+    r = video_upload(login_fixture, base_url, file_path = '/Users/iyunwen/Desktop/zhishiku-stable/video/Grass.mp4')
     print(r.text)
     assert r.json()["code"] == 1
     assert r.status_code == 200

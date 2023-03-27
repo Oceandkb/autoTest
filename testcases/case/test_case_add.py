@@ -15,11 +15,12 @@ import requests
 def test_case_add(login_fixture, base_url, random_fixture):
 
     r1 = class_search(login_fixture, base_url, domain_id=str(19)).json()
-    classes_id = str(r1['data'][0]['id'])
+    _class_id_ = str(r1['data'][0]['id'])
     r2 = field_search(login_fixture, base_url).json()
-    fields_id = str(r2['data'][0]['id'])
+    _field_id_ = str(r2['data'][0]['id'])
+    _open_field_id_ = str(r2['data'][0]['id'])
     r = case_add(login_fixture, base_url, case_name = random_fixture("案例"), rich_text_content = "", edit_type = "1",
-                 class_id = classes_id, field_id = fields_id, open_field_id = fields_id, markdown_content = "搜索")
+                 class_id = _class_id_, field_id = _field_id_, open_field_id = _open_field_id_, markdown_content = random_fixture("内容"))
     print(r.text)
     assert r.json()["code"] == 1
     assert r.status_code == 200

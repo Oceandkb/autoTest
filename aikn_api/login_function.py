@@ -1,10 +1,23 @@
 import jpype
 import requests
 from requests import Response
+import configparser
+from pathlib import Path
 import os
 
+p = Path(__file__)
+user_info_path = p.parent.parent.joinpath("pytest.ini")
+config = configparser.ConfigParser()
+config.read(user_info_path, encoding="utf-8")
 
-def login(s, base_url, user="zhishiku_auto", password="123456Abc!") -> Response:
+username = config["pytest"]["username"]
+password = config["pytest"]["password"]
+
+print("读取的账户信息：" + config["pytest"]["username"])
+print("读取的密码信息：" + config["pytest"]["password"])
+
+
+def login(s, base_url, user = username, password = password) -> Response:
     a = os.path.dirname(os.path.abspath(__file__))
     data_path = os.path.join(a, "encryption.jar")
 #---------------------------------------------------------------------------------------------------------------+
