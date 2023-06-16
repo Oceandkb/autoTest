@@ -22,8 +22,9 @@ import requests
 
 
 @allure.epic("知识库")
-@allure.feature("词条")
-@allure.story("列表词条查询成功")
+@allure.feature("知识")
+@allure.story("词条")
+@allure.title("列表词条查询成功")
 @pytest.mark.run(order = 2)
 def test_entry_list_search(login_fixture, base_url):
     r = entry_list_search(login_fixture, base_url)

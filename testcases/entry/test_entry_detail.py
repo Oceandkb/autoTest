@@ -11,8 +11,9 @@ from aikn_api.entry_search import entry_list_search
 import requests
 
 @allure.epic("知识库")
-@allure.feature("词条")
-@allure.story("查看词条详情")
+@allure.feature("知识")
+@allure.story("词条")
+@allure.title("查询词条详情")
 #@pytest.mark.usefixtures("entry_fixture")
 def test_entry_detail(login_fixture, base_url):
     r = entry_list_search(login_fixture, base_url).json()

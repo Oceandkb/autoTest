@@ -13,8 +13,9 @@ import requests
 
 
 @allure.epic("知识库")
-@allure.feature("词条")
-@allure.story("词条使用场景：查询词条->查看词条详情页->删除词条")
+@allure.feature("知识")
+@allure.story("词条")
+@allure.title("查询词条->查看词条详情页->删除词条")
 @pytest.mark.usefixtures("entry_fixture")
 #@pytest.mark.run(order = 1)
 def test_entry_scene(login_fixture, base_url, entry_fixture):
