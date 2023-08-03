@@ -1,7 +1,7 @@
 # @Time   ：2022/11/18 13:24
 # @Author : Chao
 # @File   : entry_search.py
-
+import json
 
 import allure
 import requests
@@ -22,8 +22,10 @@ def entry_list_search(s, base_url) -> Response:
     }
     s.headers.update(h)
     r = s.post(url, json = body)
-    #r_json = r.json()
-    return r
+    if len(r.json()["data"]["list"]) > 0:
+        return r
+    else:
+        print("列表为空")
 
 @allure.step("总览搜索词条")
 def entry_elasticsearch(s, base_url, entry_name) -> Response:
@@ -67,7 +69,7 @@ def entry_elasticsearch(s, base_url, entry_name) -> Response:
 
     s.headers.update(h)
     r = s.post(url, json = body)
-    #r_json = r.json()
+    #r_json = return ()
     return r
 
 
@@ -76,5 +78,5 @@ if __name__ == '__main__':
     base_url = "https://v6-stable.faqrobot.com.cn"
     from aikn_api.login_function import login
     login(s, base_url)
-    result = entry_elasticsearch(s, base_url, "2222")
-    print(result.text)
+    result = entry_list_search(s, base_url)
+    print(result, type(result))

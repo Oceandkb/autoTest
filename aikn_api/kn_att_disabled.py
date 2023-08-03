@@ -14,7 +14,7 @@ def public_kn_att_disabled(s, base_url, kn_public_att_id) -> Response:
     }
     s.headers.update(h)
     r = s.get(url)
-    #r_json = r.json()
+    #r_json = return ()
     return r
 
 @allure.step("禁用百科分类关联的知识属性")
@@ -26,7 +26,7 @@ def wiki_class_kn_att_disabled(s, base_url, kn_class_att_id) -> Response:
     }
     s.headers.update(h)
     r = s.get(url)
-    #r_json = r.json()
+    #r_json = return ()
     return r
 
 @allure.step("禁用领域关联的知识属性")
@@ -38,7 +38,7 @@ def field_kn_att_disabled(s, base_url, kn_field_att_id) -> Response:
     }
     s.headers.update(h)
     r = s.get(url)
-    #r_json = r.json()
+    #r_json = return ()
     return r
 
 if __name__ == '__main__':

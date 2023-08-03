@@ -18,9 +18,10 @@ def class_delete(s, base_url, classes_id, domain_id) ->Response:
     """
     url = base_url+"/aikn-admin/knowledge/knowledge/v1/classes?classesId="+ classes_id + "&domainId=" + domain_id
     r = requests.delete(url) #HTTP Delete
-    js = r.json() #解析json（如果该接口响应的是content-type是json格式的数据）
+    js = r.json()#解析json（如果该接口响应的是content-type是json格式的数据）
     cookie1 = r.cookies #获得cookie数据
     return s.delete(url, json=js, cookies=cookie1)
+
 
 if __name__ == '__main__':
     base_url="https://v6-stable.faqrobot.com.cn"

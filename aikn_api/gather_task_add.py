@@ -27,7 +27,8 @@ def gather_task_add_required(s, base_url, task_name)  -> Response:
 
     }
     s.headers.update(h)
-    return s.post(url, json=body)
+    r = s.post(url, json=body)
+    return r
 
 if __name__ == '__main__':
     base_url = "https://v5-test.faqrobot.cn"

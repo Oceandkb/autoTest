@@ -29,8 +29,7 @@ def class_search(s, base_url, domain_id) -> Response:
 if __name__ == '__main__':
     s = requests.session()
     base_url = "https://v6-stable.faqrobot.cn"
-    from api.login_function import login
+    from aikn_api.login_function import login
     login(s, base_url)
-    class_search(s, base_url, domain_id)
-    result = class_search(s, base_url, domain_id)
-    print(result.text)
+    result = class_search(s, base_url, "18")
+    print(result.text, type(result))

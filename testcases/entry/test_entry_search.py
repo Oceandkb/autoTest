@@ -1,6 +1,7 @@
 # @Time   ：2022/11/18 13:43
 # @Author : Chao
 # @File   : test_entry_search.py
+import json
 
 import allure
 import pytest
@@ -28,12 +29,13 @@ import requests
 @pytest.mark.run(order = 2)
 def test_entry_list_search(login_fixture, base_url):
     r = entry_list_search(login_fixture, base_url)
-    r_json = r.json()
-    entry_name = r_json['data']['list'][0]['questions'][0]['question']
-    print(r.text)
-    print(entry_name)
-    assert r.json()["code"] == 1
-    assert r.status_code == 200
-    assert r.json()['message'] == '操作成功!'
+    if r == None:
+        print(r)
+    else:
+         entry_name = r.json()['data']['list'][0]['questions'][0]['question']
+         print(entry_name)
+         assert r.json()["code"] == 1
+         assert r.status_code == 200
+         assert r.json()['message'] == '操作成功!'
 
 

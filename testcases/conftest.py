@@ -5,6 +5,7 @@ from aikn_api.kn_att_search import *
 from aikn_api.entry_add import entry_add
 from aikn_api.entry_search import *
 from aikn_api.entry_delete import entry_delete
+from aikn_api.field_search import field_search
 import pytest
 import requests
 import random
@@ -49,14 +50,16 @@ def kn_att_fixture(login_fixture, base_url, random_fixture):
 @pytest.fixture(scope="session")
 def entry_fixture(login_fixture, base_url, random_fixture):
     '''查询词条setup：新增词条，列表查询新增的词条名称'''
-    entry_add(login_fixture, base_url, random_fixture("词条"))
+    _r_ = field_search(login_fixture, base_url)
+    field_id = str(_r_.json()['data'][0]['id'])
+    entry_add(login_fixture, base_url, random_fixture("词条"), field_id)
     r = entry_list_search(login_fixture, base_url)
-    r_json = r.json()
-    entry_name = r_json['data']['list'][0]['questions'][0]['question']
-    entry_id = str(r_json['data']['list'][0]['id'])
-    entry_question_id = str(r_json['data']['list'][0]['questions'][0]['id'])
+    entry_name = r.json()['data']['list'][0]['questions'][0]['question']
+    entry_id = str(r.json()['data']['list'][0]['id'])
+    entry_question_id = str(r.json()['data']['list'][0]['questions'][0]['id'])
     print(entry_name,entry_id,entry_question_id)
     yield entry_name, entry_id, entry_question_id
+    # fixture执行结束之后，对产生的数据进行删除
     d = entry_delete(login_fixture, base_url, entry_id)
     print(d.text)
 

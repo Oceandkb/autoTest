@@ -27,7 +27,10 @@ def case_search(s, base_url) -> Response:
     }
     s.headers.update(h)
     r = s.post(url, json=body)
-    return r
+    if r.json()['data']['list'] is not None:
+        return r
+    else:
+        print("当前知识库没有案例知识，无法进行删除操作！")
 
 if __name__ == '__main__':
     s = requests.session()
@@ -35,4 +38,4 @@ if __name__ == '__main__':
     from aikn_api.login_function import login
     login(s, base_url)
     result = case_search(s, base_url)
-    print(result.text)
+    print(result)

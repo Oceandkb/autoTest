@@ -28,7 +28,7 @@ def entry_delete(s, base_url, entry_id) -> Response:
     }
     s.headers.update(h)
     r = s.post(url, json = body)
-    #r_json = r.json()
+    #r_json = return ()
     return r
 
 

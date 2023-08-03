@@ -48,7 +48,7 @@ def kn_att_wiki_class_cite(s, base_url, cite_att_id) -> Response:
     return r
 
 @allure.step("领域知识属性引用")
-def kn_att_field_cite(s, base_url, cite_att_id) -> Response:
+def kn_att_field_cite(s, base_url, cite_att_id, field_id) -> Response:
 
     url = base_url + "/aikn-admin/knowledge/field/v1/field-label"
     h = {
@@ -61,9 +61,9 @@ def kn_att_field_cite(s, base_url, cite_att_id) -> Response:
         "searchCondition":1,
         "viewStyle":1,
         "groupId":-1,
-        "need": 1,
+        "need": 0,
         "questionType":"6",
-        "fieldId":"261"
+        "fieldId":field_id
     }
     s.headers.update(h)
     r = s.post(url, json=body)

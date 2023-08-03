@@ -9,7 +9,7 @@ from requests import Response
 import random
 
 @allure.step("新增词条")
-def entry_add(s, base_url, entry_name) ->Response:
+def entry_add(s, base_url, entry_name, field_id) ->Response:
     url = base_url + "/aikn-admin/knowledge/entry/v1/add-entry/"
     ran = str(random.randint(1, 1000))
     #entry_name = "auto_entry" + ran
@@ -20,8 +20,8 @@ def entry_add(s, base_url, entry_name) ->Response:
         "classIds": [-1],
         "question": {"question": entry_name, "id": ""},
         "readPermissions": [],
-        "currentField": 261,
-        "field": [261],
+        "currentField": field_id,
+        "field": [field_id],
         "buildRelationText": "",
         "knowledgeType": None,
         "knowledge": {
@@ -57,15 +57,14 @@ def entry_add(s, base_url, entry_name) ->Response:
         "videoRelation": []
     }
     s.headers.update(h)
-    r = s.post(url, json = body)
+    r = s.post(url, json=body)
     return r
 
 
 if __name__ == '__main__':
     s = requests.session()
-    base_url = "https://v5-test.faqrobot.cn"
+    base_url = "https://v6-stable.faqrobot.com.cn"
     from aikn_api.login_function import login
-    login(s, base_url)
-    entry_add(s, base_url)
-    result = entry_add(s, base_url)
+    login(s, base_url, user = "autoSite", password = "123456Abc!")
+    result = entry_add(s, base_url, entry_name = "test11", field_id=197)
     print(result.text)

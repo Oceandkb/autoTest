@@ -16,8 +16,8 @@ import requests
 @allure.title("查询词条详情")
 #@pytest.mark.usefixtures("entry_fixture")
 def test_entry_detail(login_fixture, base_url):
-    r = entry_list_search(login_fixture, base_url).json()
-    entry_id = str(r['data']['list'][0]['id'])
+    r = entry_list_search(login_fixture, base_url)
+    entry_id = str(r.json()['data']['list'][0]['id'])
     r1 = entry_detail(login_fixture, base_url, entry_id)
     print(r1.text)
     assert r1.json()["code"] == 1
