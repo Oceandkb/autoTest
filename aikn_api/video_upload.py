@@ -24,7 +24,7 @@ def video_upload(s, base_url, file_path) -> Response:
     url = base_url + "/aikn-admin/video-library/management/v1/video-upload"
     h = {
         "Accept": "*/*",
-        'Content-Length': '4794424',
+        'Content-Length': '300000',
     }
     # file_path = video_path       #'/Users/iyunwen/Desktop/video/mp4/wood.mp4'
     data = {

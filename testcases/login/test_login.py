@@ -4,11 +4,13 @@
 import allure
 from aikn_api.login_function import login
 import requests
+import pytest
+
 
 @allure.feature("登录")
 @allure.story("门户首页登录")
 @allure.title("登录成功")
-def test_login_1(base_url):
+def test_login(base_url):
     s = requests.Session()
     r = login(s, base_url)
     print(r.text)

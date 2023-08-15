@@ -20,6 +20,7 @@ def kn_att_public_cite(s, base_url, cite_att_id) -> Response:
         "defaultValue":"",
         "searchCondition":1,
         "viewStyle":1,
+        "need": 0,
         "questionType":"1",
         "fieldId":"-1"
     }
@@ -41,7 +42,8 @@ def kn_att_wiki_class_cite(s, base_url, cite_att_id) -> Response:
         "viewStyle":1,
         "questionType":"1",
         "classesId":"-1",
-        "domainId":1
+        "domainId":1,
+        "need": 0
     }
     s.headers.update(h)
     r = s.post(url, json=body)

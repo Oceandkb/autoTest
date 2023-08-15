@@ -26,7 +26,7 @@ def login(s, base_url, user = username, password = password) -> Response:
     r = s.post(url1)  # 调用post方法来发送请求，获取响应
     str1 = r.json()["data"]["Modulus"]    #将请求url1获取的json相应内容存储到str1中（字符串格式）
     str2 = r.json()["data"]["Exponent"]
-    print(str1)
+    # print(str1)
     jvm_path = jpype.getDefaultJVMPath() #
     if not jpype.isJVMStarted():  # 判断jvm是否启动
         jpype.startJVM(jvm_path, "-ea", "-Djava.class.path=%s" % data_path)   # 若没有启动，启动jvm

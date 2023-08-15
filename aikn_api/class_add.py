@@ -31,6 +31,7 @@ def class_add(s, base_url, class_name, domain_id) -> Response:
 
     s.headers.update(h)
     r = s.post(url, json=body)
+    print(r.request.body)
     return r
 
 if __name__ == '__main__':
@@ -38,5 +39,5 @@ if __name__ == '__main__':
     base_url = "https://v6-stable.faqrobot.com.cn"
     from aikn_api.login_function import login
     login(s, base_url)
-    result = case_class_add(s, base_url, "", 19)
+    result = class_add(s, base_url, "1234", 19)
     print(result.text)

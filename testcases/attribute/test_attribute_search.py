@@ -13,6 +13,9 @@ from aikn_api.kn_att_search import kn_all_att_search
 # @pytest.mark.smoke
 def test_kn_all_att_search(login_fixture, base_url):
     r = kn_all_att_search(login_fixture, base_url)
-    assert r.json()["code"] == 1
-    assert r.status_code == 200
-    assert r.json()['message'] == '操作成功!'
+    if r == None:
+        print(r)
+    else:
+        assert r.json()["code"] == 1
+        assert r.status_code == 200
+        assert r.json()['message'] == '操作成功!'

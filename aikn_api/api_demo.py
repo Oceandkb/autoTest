@@ -7,8 +7,6 @@ import allure
 import requests
 from requests import Response
 
-
-#ran = str(random.randint(1, 1000))
 @allure.step("function description")
 def function_name(s, base_url) -> Response:
 
@@ -18,7 +16,7 @@ def function_name(s, base_url) -> Response:
     }
     #kn_text_att_name = "Auto" + ran
     body = {
-           input parameters
+           input parameters,
     }
     s.headers.update(h)
     r = s.post(url, json=body)

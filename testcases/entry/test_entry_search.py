@@ -26,7 +26,7 @@ import requests
 @allure.feature("知识")
 @allure.story("词条")
 @allure.title("列表词条查询成功")
-@pytest.mark.run(order = 2)
+# @pytest.mark.run(order = 2)
 def test_entry_list_search(login_fixture, base_url):
     r = entry_list_search(login_fixture, base_url)
     if r == None:

@@ -1,11 +1,13 @@
 from aikn_api.login_function import login
 from aikn_api.class_add import class_add
+from aikn_api.class_search import class_search
 from aikn_api.kn_att_add import *
 from aikn_api.kn_att_search import *
 from aikn_api.entry_add import entry_add
 from aikn_api.entry_search import *
 from aikn_api.entry_delete import entry_delete
 from aikn_api.field_search import field_search
+from aikn_api.courseware_doc_upload import courseware_doc_upload
 import pytest
 import requests
 import random
@@ -18,6 +20,33 @@ def login_fixture(base_url):
     login(s, base_url)
     yield s
     s.close()
+
+@pytest.fixture(scope='session')
+def field_search_fixture(login_fixture, base_url):
+    '''
+    查询默认领域id
+    :param login_fixture:
+    :param base_url:
+    :return:
+    '''
+    r = field_search(login_fixture, base_url)
+    field_id = r.json()['data'][0]['id']
+    print(field_id)
+    yield field_id
+
+@pytest.fixture(scope='session')
+def classId_search_fixture(login_fixture, base_url, request):
+    '''
+    查询不同知识的默认分类id
+    :param login_fixture:
+    :param base_url:
+    :return:
+    '''
+    domain_id = request.param
+    r = class_search(login_fixture, base_url, domain_id)
+    class_id = r.json()['data'][0]['id']
+    print(class_id)
+    yield class_id
 
 @pytest.fixture(scope="session")
 def wiki_class_add_fixture(login_fixture, base_url):
@@ -63,4 +92,21 @@ def entry_fixture(login_fixture, base_url, random_fixture):
     d = entry_delete(login_fixture, base_url, entry_id)
     print(d.text)
 
+@pytest.fixture(scope="session")
+def course_material_fixture(login_fixture, base_url):
+    '''
+
+    :param login_fixture:
+    :param base_url:
+    :param file_path: 课件素材存储路径
+    :return:
+    '''
+    r = courseware_doc_upload(login_fixture, base_url, file_path='/Users/iyunwen/Desktop/zhishiku-stable/material/bank.doc')
+    _r_ = r.json()['data']
+    material_id = r.json()['data']['id']
+    # print(type(material_id))
+    yield _r_, material_id
+
+def test(course_material_fixture):
+    print(course_material_fixture)
 
