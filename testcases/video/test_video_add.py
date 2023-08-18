@@ -13,7 +13,7 @@
 # @allure.feature("知识")
 # @allure.story("视频库")
 # @allure.title("新增视频知识成功")
-# def test_video_add(login_fixture, base_url, random_fixture):
+# def test_video_add(login_fixture, base_url, datatime_fixture):
 #
 #     # <editor-fold desc = "class, field, upload">
 #     r1 = class_search(login_fixture, base_url, domain_id=str(18)).json()
@@ -33,7 +33,7 @@
 #
 #     _r_ = video_add(login_fixture, base_url, video_id = _video_id_, cover_id = _cover_id_, video_time = _video_time_,
 #                     video_src = _url_, class_id = _class_id_, field_id = _field_id_, open_field_id = _open_field_id_,
-#                     video_name = random_fixture("视频"))
+#                     video_name = datatime_fixture)
 #     print(r.text)
 #     assert 视频库分类()["code"] == 1
 #     assert r.status_code == 200

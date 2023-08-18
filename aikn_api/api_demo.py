@@ -14,7 +14,6 @@ def function_name(s, base_url) -> Response:
     h = {
         "Accept": "application/json, text/plain, */*"
     }
-    #kn_text_att_name = "Auto" + ran
     body = {
            input parameters,
     }

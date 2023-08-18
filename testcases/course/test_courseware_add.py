@@ -14,14 +14,14 @@ import requests
 @allure.feature("学院")
 @allure.story("课程")
 @allure.title("添加课件成功")
-@pytest.mark.usefixtures("course_material_fixture")
-def test_courseware_add(login_fixture, base_url, course_material_fixture, random_fixture):
+@pytest.mark.usefixtures("courseware_upload_material_fixture")
+def test_courseware_add(login_fixture, base_url, courseware_upload_material_fixture, datetime_fixture):
     #r0 = field_search(login_fixture, base_url)
     #field_id = r0.json()['data']['id']
     #print(field_id)
-    r = courseware_add(login_fixture, base_url, is_download = 0, courseware_name = random_fixture('课程'),
+    r = courseware_add(login_fixture, base_url, is_download = 0, courseware_name = datetime_fixture + "课件",
                               field_id = '251', classes_id = '-1',
-                              material_data = course_material_fixture[0], material_id = course_material_fixture[1])
+                              material_data = courseware_upload_material_fixture[0], material_id = courseware_upload_material_fixture[1])
     print(r.text)
     assert r.json()["code"] == 1
     assert r.status_code == 200

@@ -8,10 +8,12 @@ from aikn_api.entry_search import *
 from aikn_api.entry_delete import entry_delete
 from aikn_api.field_search import field_search
 from aikn_api.courseware_doc_upload import courseware_doc_upload
+from aikn_api.courseware_search import courseware_search
+from aikn_api.material_search import material_search
 import pytest
 import requests
 import random
-
+import datetime
 
 @pytest.fixture(scope="session")
 def login_fixture(base_url):
@@ -21,7 +23,7 @@ def login_fixture(base_url):
     yield s
     s.close()
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope="session")
 def field_search_fixture(login_fixture, base_url):
     '''
     查询默认领域id
@@ -34,7 +36,7 @@ def field_search_fixture(login_fixture, base_url):
     print(field_id)
     yield field_id
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope="session")
 def classId_search_fixture(login_fixture, base_url, request):
     '''
     查询不同知识的默认分类id
@@ -47,6 +49,19 @@ def classId_search_fixture(login_fixture, base_url, request):
     class_id = r.json()['data'][0]['id']
     print(class_id)
     yield class_id
+
+@pytest.fixture(scope="session")
+def datetime_fixture():
+    # 获取当前日期和时间
+    current_time = datetime.datetime.now()
+
+    # 格式化日期和时间为字符串
+    formatted_datetime = current_time.strftime("%Y-%m-%d_%H-%M-%S")
+
+    name = f"{formatted_datetime}"
+    yield name
+def test(datetime_fixture):
+    print(datetime_fixture)
 
 @pytest.fixture(scope="session")
 def wiki_class_add_fixture(login_fixture, base_url):
@@ -93,20 +108,33 @@ def entry_fixture(login_fixture, base_url, random_fixture):
     print(d.text)
 
 @pytest.fixture(scope="session")
-def course_material_fixture(login_fixture, base_url):
+def courseware_upload_material_fixture(login_fixture, base_url):
     '''
 
     :param login_fixture:
     :param base_url:
-    :param file_path: 课件素材存储路径
+    :param file_path: 上传课件素材存储路径
     :return:
     '''
-    r = courseware_doc_upload(login_fixture, base_url, file_path='/Users/iyunwen/Desktop/zhishiku-stable/material/bank.doc')
+    r = courseware_doc_upload(login_fixture, base_url, 
+                              file_path='/Users/iyunwen/Desktop/zhishiku-stable/material/bank.doc')
     _r_ = r.json()['data']
     material_id = r.json()['data']['id']
-    # print(type(material_id))
+    print(_r_)
     yield _r_, material_id
 
-def test(course_material_fixture):
-    print(course_material_fixture)
+@pytest.fixture(scope="session")
+def courseware_search_fixture(login_fixture, base_url, field_search_fixture):
+    r = courseware_search(login_fixture, base_url, field_search_fixture)
+    courseware_id = r.json()['data']['list'][0]['id']
+    courseware_name = r.json()['data']['list'][0]['coursewareName']
+    print(courseware_id, courseware_name)
+    yield courseware_id, courseware_name
 
+@pytest.fixture(scope="session")
+def material_search_fixture(login_fixture, base_url, request):
+    material_type = request.param
+    r = material_search(login_fixture, base_url, material_type)
+    path = r.json()['data']['list'][0]['path']
+    print(path)
+    yield path
