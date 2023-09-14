@@ -20,7 +20,7 @@ def test_courseware_add(login_fixture, base_url, courseware_upload_material_fixt
     #field_id = r0.json()['data']['id']
     #print(field_id)
     r = courseware_add(login_fixture, base_url, is_download = 0, courseware_name = datetime_fixture + "课件",
-                              field_id = '251', classes_id = '-1',
+                              field_id = '265', classes_id = '-1',
                               material_data = courseware_upload_material_fixture[0], material_id = courseware_upload_material_fixture[1])
     print(r.text)
     assert r.json()["code"] == 1

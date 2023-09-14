@@ -10,11 +10,8 @@ import requests
 @allure.epic("知识库")
 @allure.feature("词条")
 @allure.story("新增词条成功")
-def test_entry_add(login_fixture, base_url, random_fixture):
-    r1 = field_search(login_fixture, base_url)
-    _r1_ = r1.json()
-    field_id = str(_r1_['data'][0]['id'])
-    r = entry_add(login_fixture, base_url, random_fixture("词条"), field_id)
+def test_entry_add(login_fixture, base_url, datetime_fixture, field_search_fixture):
+    r = entry_add(login_fixture, base_url, datetime_fixture + '詞條', field_search_fixture)
     print(r.text)
     assert r.json()["code"] == 1
     assert r.status_code == 200

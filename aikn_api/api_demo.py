@@ -19,7 +19,7 @@ def function_name(s, base_url) -> Response:
     }
     s.headers.update(h)
     r = s.post(url, json=body)
-    return
+    return r
 
 if __name__ == '__main__':
     s = requests.session()

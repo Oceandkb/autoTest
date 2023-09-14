@@ -18,10 +18,13 @@ from aikn_api.course_add import course_add
 @pytest.mark.parametrize('material_search_fixture', ['1'], indirect=True)
 def test_course_add(login_fixture, base_url, field_search_fixture, courseware_search_fixture,
                  datetime_fixture, material_search_fixture):
-    r = course_add(login_fixture, base_url, field_id=field_search_fixture,course_name = datetime_fixture + "课程",
+    if courseware_search_fixture == None:
+        print('知识库中无课件，请先新增课件再添加課程')
+    else:
+        r = course_add(login_fixture, base_url, field_id=field_search_fixture,course_name = datetime_fixture + "课程",
                    class_id = '-1',cover_path=material_search_fixture, serial_name="Chapter 1", content_type=4,
                    content_id=courseware_search_fixture[0], content_name=courseware_search_fixture[1])
-    print(r.text)
-    assert r.json()["code"] == 1
-    assert r.status_code == 200
-    assert r.json()['message'] == '操作成功'
+        print(r.text)
+        assert r.json()["code"] == 1
+        assert r.status_code == 200
+        assert r.json()['message'] == '操作成功'

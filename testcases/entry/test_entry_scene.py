@@ -21,8 +21,6 @@ import requests
 def test_entry_scene(login_fixture, base_url, entry_fixture):
     r = entry_elasticsearch(login_fixture, base_url, entry_fixture[0])
     t = entry_detail(login_fixture, base_url, entry_fixture[1])
-    #u = entry_modify(login_fixture, base_url, entry_fixture[0], entry_fixture[1], entry_fixture[2])
-    #r2 = entry_delete(login_fixture, base_url, entry_fixture[1])
     print(r.text)
     print(t.text)
     #print(u.text)

@@ -46,3 +46,18 @@ def fixture():
 def login(fixture):
   login(s, fixture[0]) 
 ```
+
+
+## fixture返回None
+
+```python
+@pytest.fixture(scope="session")
+def my_fixture():
+    my_list = []
+    if len(my_list) == 0:
+    #    pass  #pass，默認返回None
+        yield None
+    else:
+        yield my_list
+```
+但是在使用这个fixture时，会提示"Fixture 'fixture_name' has no return value"，所以改成yield或者reture None，确保程序不会报错

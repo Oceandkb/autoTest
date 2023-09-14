@@ -10,6 +10,7 @@ from aikn_api.field_search import field_search
 from aikn_api.courseware_doc_upload import courseware_doc_upload
 from aikn_api.courseware_search import courseware_search
 from aikn_api.material_search import material_search
+from aikn_api.community_plate_search import community_plate_search
 import pytest
 import requests
 import random
@@ -33,7 +34,7 @@ def field_search_fixture(login_fixture, base_url):
     '''
     r = field_search(login_fixture, base_url)
     field_id = r.json()['data'][0]['id']
-    print(field_id)
+    print('領域id為：' + str(field_id))
     yield field_id
 
 @pytest.fixture(scope="session")
@@ -56,8 +57,7 @@ def datetime_fixture():
     current_time = datetime.datetime.now()
 
     # 格式化日期和时间为字符串
-    formatted_datetime = current_time.strftime("%Y-%m-%d_%H-%M-%S")
-
+    formatted_datetime = current_time.strftime("%Y-%m-%d_%H:%M:%S")
     name = f"{formatted_datetime}"
     yield name
 def test(datetime_fixture):
@@ -92,20 +92,21 @@ def kn_att_fixture(login_fixture, base_url, random_fixture):
 
 
 @pytest.fixture(scope="session")
-def entry_fixture(login_fixture, base_url, random_fixture):
+def entry_fixture(login_fixture, base_url, random_fixture, field_search_fixture):
     '''查询词条setup：新增词条，列表查询新增的词条名称'''
-    _r_ = field_search(login_fixture, base_url)
-    field_id = str(_r_.json()['data'][0]['id'])
-    entry_add(login_fixture, base_url, random_fixture("词条"), field_id)
+    entry_add(login_fixture, base_url, random_fixture("词条"), field_search_fixture)
     r = entry_list_search(login_fixture, base_url)
-    entry_name = r.json()['data']['list'][0]['questions'][0]['question']
-    entry_id = str(r.json()['data']['list'][0]['id'])
-    entry_question_id = str(r.json()['data']['list'][0]['questions'][0]['id'])
-    print(entry_name,entry_id,entry_question_id)
-    yield entry_name, entry_id, entry_question_id
+    if r == None:
+        print('五詞條數據')
+    else:
+        entry_name = r.json()['data']['list'][0]['questions'][0]['question']
+        entry_id = str(r.json()['data']['list'][0]['id'])
+        entry_question_id = str(r.json()['data']['list'][0]['questions'][0]['id'])
+        print(entry_name,entry_id,entry_question_id)
+        yield entry_name, entry_id, entry_question_id
     # fixture执行结束之后，对产生的数据进行删除
-    d = entry_delete(login_fixture, base_url, entry_id)
-    print(d.text)
+        d = entry_delete(login_fixture, base_url, entry_id)
+        print(d.text)
 
 @pytest.fixture(scope="session")
 def courseware_upload_material_fixture(login_fixture, base_url):
@@ -126,15 +127,27 @@ def courseware_upload_material_fixture(login_fixture, base_url):
 @pytest.fixture(scope="session")
 def courseware_search_fixture(login_fixture, base_url, field_search_fixture):
     r = courseware_search(login_fixture, base_url, field_search_fixture)
-    courseware_id = r.json()['data']['list'][0]['id']
-    courseware_name = r.json()['data']['list'][0]['coursewareName']
-    print(courseware_id, courseware_name)
-    yield courseware_id, courseware_name
+    r_list = r.json()['data']['list']
+    if len(r_list) == 0:
+        yield None
+    else:
+        courseware_id = r.json()['data']['list'][0]['id']
+        courseware_name = r.json()['data']['list'][0]['coursewareName']
+        print(courseware_id, courseware_name)
+        yield courseware_id, courseware_name
 
 @pytest.fixture(scope="session")
 def material_search_fixture(login_fixture, base_url, request):
     material_type = request.param
     r = material_search(login_fixture, base_url, material_type)
     path = r.json()['data']['list'][0]['path']
-    print(path)
+    print('封板的路径为：' + str(path))
     yield path
+
+
+@pytest.fixture(scope='session')
+def community_plate_search_fixture(login_fixture, base_url):
+    r = community_plate_search(login_fixture, base_url)
+    plate_id = r.json()['data']['list'][0]['id']
+    print(plate_id, type(plate_id))
+    yield plate_id
