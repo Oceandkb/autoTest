@@ -14,7 +14,7 @@ from openpyxl import load_workbook
 def test_share_add(login_fixture, base_url, community_plate_search_fixture):
 
     # 打开 Excel 文件，假设文件名为 data.xlsx
-    workbook = load_workbook("question.xlsx")
+    workbook = load_workbook("testcases/community/question.xlsx")
     sheet = workbook.worksheets[1]  # 选择第一个工作表
 
     # 创建列表，存储键值对

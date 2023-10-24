@@ -14,7 +14,7 @@ from openpyxl import load_workbook
 def test_question_add(login_fixture, base_url, community_plate_search_fixture, datetime_fixture):
 
     # 打开 Excel 文件，假设文件名为 data.xlsx
-    workbook = load_workbook("question.xlsx")
+    workbook = load_workbook("testcases/community/question.xlsx")
     sheet = workbook.worksheets[0]  # 选择第一个工作表
 
     # 循环遍历第一列数据
